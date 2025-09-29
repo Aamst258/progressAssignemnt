@@ -36,6 +36,9 @@ const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 }, // Allow up to 10MB (adjust as needed)
 });
 
+app.get("/", (req, res) => {
+  res.send("Hello! Use POST /upload to upload files.");
+});
 // 🔹 File upload endpoint with error handling
 app.post("/upload", (req, res) => {
   upload.single("file")(req, res, (err) => {
